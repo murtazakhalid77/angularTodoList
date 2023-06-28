@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../service/task.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class TasksComponent implements OnInit {
 
-  constructor(private taskService:TaskService,private router: Router) { }
+  constructor(private taskService:TaskService,private router: Router,private route:ActivatedRoute) { }
 
-
+  someSubscription: any;
   listofTask:any;
 
 
@@ -26,16 +26,25 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(id:number){
+    this.resetComponent()
     this.taskService.deleteTask(id).subscribe(
       response => {
-        console.log('List deleted successfully');
-        document.location.reload();
+        console.log('Task deleted successfully');
         
       },
       error => {
-        console.error(error);
+        this.resetComponent()
       }
+
     );
+  }
+  
+  resetComponent(){
+    this.router.routeReuseStrategy.shouldReuseRoute =()=> false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/tasks'],{
+      relativeTo:this.route
+    })
   }
   task:any
   editTask(id:number){
