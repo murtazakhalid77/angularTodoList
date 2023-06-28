@@ -6,28 +6,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AddTaskComponent } from './add-task/add-task.component';
-import { AddListComponent } from './add-list/add-list.component';
-import { ErrorComponent } from './error/error.component';
-import { ListComponent } from './list/list.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { TodosComponent } from './todos/todos.component';
+
+import {HttpClientModule} from '@angular/common/http';
+import { TasksComponent } from './tasks/tasks.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     AddTaskComponent,
-    AddListComponent,
-    ErrorComponent,
-    ListComponent,
+    HeaderComponent,
+    TasksComponent,
     FooterComponent,
-    LoginComponent,
-    TodosComponent,
+   
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

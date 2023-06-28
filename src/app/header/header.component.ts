@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
+
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { HardcodedAuthenticationService } from '../service/hardcoded-authenticat
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router:Router,public harcodeAuth:HardcodedAuthenticationService) { }
+
 
   ngOnInit(): void {
   }
